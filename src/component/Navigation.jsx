@@ -6,8 +6,10 @@ export const Navigation = () => {
   return (
     <div>
       {/* display navigation menus only for large device  */}
-      <div className='menu-container-large  lg:flex hidden items-center justify-between mx-10'>
-        <div className='logo-container flex items-center'>
+      <div className='bg-slate-200 shadow-md'>
+      
+       <div className='menu-container-large  lg:flex hidden items-center justify-between mx-10 '>
+         <div className='logo-container flex items-center'>
           {/* display the logo of the company */}
            <img src={logo} alt="roofly logo" />
         </div>
@@ -22,6 +24,7 @@ export const Navigation = () => {
           <button className='btn-one px-5 py-1 text-lg'>Sign Up</button>
         </div>
         
+        </div>
       </div>
     </div>
   )
