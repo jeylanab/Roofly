@@ -1,4 +1,21 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body{
+ font-family: "Lato", sans-serif;
+}
+
+.btn-one{
+ border-radius: 5px;
+ background-color: greenyellow;
+ box-shadow: 2px 2px hsla(110, 33%, 7%, 0.201);
+ font-weight: 400;
+ transition: background-color 0.3s ease, transform 0.3s ease;
+
+}
+.btn-one:hover{
+  background-color: rgb(30, 43, 11);
+  color: rgba(255, 255, 255, 0.918);
+}
