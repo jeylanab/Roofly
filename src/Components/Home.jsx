@@ -17,8 +17,8 @@ export const Home = () => {
         {/* container of the hero text and image for large screen */}
         <div className='hero-info-container hidden lg:flex  justify-around items-center my-10'>
           <div className='hero-text flex flex-col w-1/2 mr-5'>
-            <h1 className='hero-header title leading-tight'>Your Future, Your Home, Your Roofly</h1>
-            <p className='hero-sub-header lg:text-2xl '>Roofly combines powerful tech and personalized listings to bring  you closer to your next home, wherever you are.</p>
+            <h1 className='hero-header text-7xl leading-tight'>Your Future, Your Home, Your Roofly</h1>
+            <p className='hero-sub-header text-xl '>Roofly combines powerful tech and personalized listings to bring  you closer to your next home, wherever you are.</p>
           </div>
           <div className='hero-image w-1/2'>
            <img src={hero} alt="image of the house" />
@@ -41,19 +41,19 @@ export const Home = () => {
         {/* container of the search section on the home page only display on large screen */}
         <div className='hero-input-container lg:flex hidden justify-center items-center text-xl'>
           <div className='border flex'>
-            <div className='flex flex-col mx-10'>
-              <label className='opacity-60 text-green-600 flex '> <img src={location} alt="location icon" className='px-3' /> <p>Location</p> </label>
+            <div className='flex flex-col mx-5'>
+              <label className='opacity-60 text-green-600 flex '> <img src={location} alt="location icon" className='px-1' /> <p>Location</p> </label>
               <input className='px-3' type="text" placeholder='Choose location' />
             </div>
             <div className='flex flex-col mx-10'>
-              <label className='opacity-60 text-green-600 flex '> <img src={buy} alt="bed icon" className='px-3' /> <p>Rental/Buy</p> </label>
+              <label className='opacity-60 text-green-600 flex '> <img src={buy} alt="bed icon" className='px-1' /> <p>Rental/Buy</p> </label>
               <select>
                   <option value="1 Bed" key="1">Rental</option>
                   <option value="1 Bed" key="1">Buy</option>
               </select>
             </div>
             <div className='flex flex-col mx-10'>
-              <label className='opacity-60 text-green-600 flex '> <img src={bed} alt="bed icon" className='px-3' /> <p>Room</p> </label>
+              <label className='opacity-60 text-green-600 flex '> <img src={bed} alt="bed icon" className='px-1' /> <p>Room</p> </label>
               <select>
                   <option value="1" key="1">1 Bed</option>
                   <option value="1" key="2">2 Bed</option>
@@ -71,11 +71,11 @@ export const Home = () => {
           <div className=' flex justify-center items-center'>
             <div className=''>
               <label className='opacity-60 text-green-600 flex '> <img src={location} alt="location icon"  /> <p className='ml-2'>Location</p> </label>
-              <input className='border-r-2' type="text" placeholder='Choose location' />
+              <input  type="text" placeholder='Choose location' />
             </div>
             <div className='flex flex-col mx-3'>
               <label className='opacity-60 text-green-600 flex '> <img src={buy} alt="home icon"  /> <p className='ml-2'>Home</p> </label>
-              <select className='border-r-2'>
+              <select >
                   <option value="1 Bed" key="1">Rental</option>
                   <option value="1 Bed" key="1">Buy</option>
               </select>
