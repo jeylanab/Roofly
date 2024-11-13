@@ -70,18 +70,18 @@ export const Home = () => {
         <div className='lg:hidden'>
           <div className=' flex justify-center items-center'>
             <div className=''>
-              <label className='opacity-60 text-green-600 flex '> <img src={location} alt="location icon"  /> <p className='ml-2'>Location</p> </label>
+              <label className='opacity-60 text-green-600 flex '> <img src={location} alt="location icon"  /> <p className='ml-1'>Location</p> </label>
               <input  type="text" placeholder='Choose location' />
             </div>
-            <div className='flex flex-col mx-3'>
-              <label className='opacity-60 text-green-600 flex '> <img src={buy} alt="home icon"  /> <p className='ml-2'>Home</p> </label>
+            <div className='flex flex-col mx-1'>
+              <label className='opacity-60 text-green-600 flex '> <img src={buy} alt="home icon"  /> <p className='ml-1'>Home</p> </label>
               <select >
                   <option value="1 Bed" key="1">Rental</option>
                   <option value="1 Bed" key="1">Buy</option>
               </select>
             </div>
             <div className='flex flex-col '>
-              <label className='opacity-60 text-green-600 flex '> <img src={bed} alt="bed icon"  /> <p className='ml-2'>Room</p> </label>
+              <label className='opacity-60 text-green-600 flex '> <img src={bed} alt="bed icon"  /> <p className='ml-1'>Room</p> </label>
               <select>
                   <option value="1" key="1">1 Bed</option>
                   <option value="1" key="2">2 Bed</option>
