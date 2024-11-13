@@ -1,6 +1,6 @@
 import { React } from "react"
-import { Home } from "./component/Home"
-import { Navigation } from "./component/Navigation"
+import { Home } from "./Components/Home"
+import { Navigation } from "./Components/Navigation"
 
 
 
@@ -9,7 +9,7 @@ import { Navigation } from "./component/Navigation"
 function App() {
 
   return (
-    <div>
+    <div className=" lg:mx-20 mx-5 my-5">
 
       <Navigation />
       <Home />
