@@ -68,12 +68,12 @@ export const Home = () => {
         {/* search item only for small screen */}
         
         <div className='lg:hidden'>
-          <div className=' flex justify-center items-center'>
+          <div className='mx-5 flex justify-center items-center'>
             <div className=''>
               <label className='opacity-60 text-green-600 flex '> <img src={location} alt="location icon"  /> <p className='ml-1'>Location</p> </label>
               <input  type="text" placeholder='Choose location' />
             </div>
-            <div className='flex flex-col mx-1'>
+            <div className='flex flex-col mx-2'>
               <label className='opacity-60 text-green-600 flex '> <img src={buy} alt="home icon"  /> <p className='ml-1'>Home</p> </label>
               <select >
                   <option value="1 Bed" key="1">Rental</option>
