@@ -31,7 +31,7 @@ export const Home = () => {
            <img className='' src={hero} alt="image of the house" />
           </div>
           {/* text div of the hero section */}
-          <div className=' text-center my-8'>
+          <div className=' text-start my-8'>
             <h1 className='text-4xl'>Your Future, Your Home, Your Roofly</h1>
             <p className=' text-md  my-3'>Roofly combines powerful tech and personalized listings to bring  you closer to your next home, wherever you are.</p>
           </div>
