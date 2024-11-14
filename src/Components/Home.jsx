@@ -68,8 +68,8 @@ export const Home = () => {
         {/* search item only for small screen */}
         
         <div className='lg:hidden'>
-          <div className='mx-5 flex justify-center items-center'>
-            <div className=''>
+          <div className='flex justify-center items-center'>
+            <div className='w-40 mx-3'>
               <label className='opacity-60 text-green-600 flex '> <img src={location} alt="location icon"  /> <p className='ml-1'>Location</p> </label>
               <input  type="text" placeholder='Choose location' />
             </div>
