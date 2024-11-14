@@ -88,7 +88,7 @@ export const Home = () => {
                   <option value="1" key="3">3 Bed</option>
               </select>
             </div>
-           
+           {/* search icon for the available properities from the api */}
           </div>
           <input  className=' bg-black text-white rounded-lg w-full py-3 text-2xl my-2 ' type="submit" value='Search' />
         
