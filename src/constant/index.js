@@ -9,23 +9,23 @@ const menuList = [
   {
     id: 2,
     title: "Buy",
-    path: "/buy",
+    path: "/item",
   },
   {
     id: 3,
     title: "Rent",
-    path: "/rent",
+    path: "/item",
   },
   {
     id: 4,
     title: "Properties",
-    path: "/properties",
+    path: "/item",
   },
 
   {
     id: 5,
     title: "About",
-    path: "/",
+    path: "/about",
   },
 ];
 
