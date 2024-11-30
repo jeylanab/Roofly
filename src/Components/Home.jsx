@@ -9,6 +9,8 @@ import { Services } from '../Pages/Services';
 import { House } from './House';
 import bd from "../Assets/bd.svg"
 import bath from "../Assets/bath.svg"
+import lc from "../Assets/lc.svg"
+
 
 // Load environment variables
 
@@ -196,26 +198,28 @@ export const Home = () => {
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {results.map((property, index) => (
           <li
+          
             key={property.listingId}
-            className=""
+            className="relative my-5"
           >
             <img
               src={property.imageUris?.[0] || 'https://via.placeholder.com/150'}
               alt={property.title}
               className="rounded-md mb-4 w-full object-cover"
             />
-            <div className='flex justify-between items-center'>
+            <div className='border bg-white shadow-sm w-[90%] absolute bottom-[-15px] left-5'>
+            <div className='flex justify-between items-top'>
               <h3 className="text-lg font-bold ">{property.title}</h3>
               <p className="text-xl text-lime-500 font-bold">
               {property.pricing.label || "Price not available"}
               </p>
             
             </div>
-            <div className='flex'>
-              <img src={loc} alt="location" />
+            <div className='flex justify-start items-start'>
+              <img src={lc} alt="location" />
               <p className="text-gray-600">{property.address}</p>
             </div>
-            <div className='flex justify-between'>
+            <div className='flex justify-between text-lg'>
               <div className='flex'>
               <img src={bath} alt="" /> <p className='mx-2'>{property.attributes.bathrooms} {property.attributes.bathrooms === 1 ? "bath" : "baths"} </p>
               </div>
@@ -225,8 +229,11 @@ export const Home = () => {
               </div>
               <p className="text-sm text-lime-500">
               {property.flag || "No special tag"}
-            </p>
+                </p>
+                
+              </div>
             </div>
+              
 
           </li>
         ))}
