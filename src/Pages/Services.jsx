@@ -21,7 +21,7 @@ export const Services = () => {
           <div className="bg-white p-6 shadow-lg rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
             <img src={c2} alt="rooms" />
             <h3 className="text-lg font-medium mt-4">324 Rooms Available</h3>
-            <p className="mt-2">Enjoy a wide selection of rooms, tailored to meet diverse needs and preferences.</p>
+            <p className="mt-2">Enjoy a wide selection of rooms, <br/> tailored to meet diverse needs and preferences.</p>
           </div>
         </div>
 

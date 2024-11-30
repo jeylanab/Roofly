@@ -8,6 +8,7 @@ import { About } from "./Pages/About";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import PropertyList from "./Components/PropertyList";
+import  {SearchProperty} from "./Components/searchProperty";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} /> 
         </Routes>
       </div>
+      <SearchProperty/>
       {/* Footer */}
       <Footer />
     </>
