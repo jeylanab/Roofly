@@ -7,6 +7,8 @@ import bed from "../Assets/bed.svg";
 import buy from "../Assets/buy.svg";
 import { Services } from '../Pages/Services';
 import { House } from './House';
+import bd from "../Assets/bd.svg"
+import bath from "../Assets/bath.svg"
 
 // Load environment variables
 
@@ -190,26 +192,42 @@ export const Home = () => {
   {error && <p className="text-red-500">Error: {error}</p>}
   {results.length > 0 ? (
     <div>
-      <h2 className="text-2xl font-bold mb-4">Search Results:</h2>
+      <h2 className="text-2xl font-bold mb-4">Properties:</h2>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {results.map((property, index) => (
           <li
             key={property.listingId}
-            className="border p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300"
+            className=""
           >
             <img
               src={property.imageUris?.[0] || 'https://via.placeholder.com/150'}
               alt={property.title}
-              className="rounded-md mb-4 w-full h-48 object-cover"
+              className="rounded-md mb-4 w-full object-cover"
             />
-            <h3 className="text-lg font-bold">{property.title}</h3>
-            <p className="text-gray-600">{property.address}</p>
-            <p className="text-green-500 font-semibold">
+            <div className='flex justify-between items-center'>
+              <h3 className="text-lg font-bold ">{property.title}</h3>
+              <p className="text-xl text-lime-500 font-bold">
               {property.pricing.label || "Price not available"}
+              </p>
+            
+            </div>
+            <div className='flex'>
+              <img src={loc} alt="location" />
+              <p className="text-gray-600">{property.address}</p>
+            </div>
+            <div className='flex justify-between'>
+              <div className='flex'>
+              <img src={bath} alt="" /> <p className='mx-2'>{property.attributes.bathrooms} {property.attributes.bathrooms === 1 ? "bath" : "baths"} </p>
+              </div>
+              <div className='flex'>
+              <img src={bd} alt="" /> <p className='mx-2'>{property.attributes.bedrooms} {property.attributes.bedrooms === 1 ? "bed" : "beds"}</p>
+              
+              </div>
+              <p className="text-sm text-lime-500">
+              {property.flag || "No special tag"}
             </p>
-            <p className="text-sm text-gray-500">
-              {property.agent?.attributes?.flag || "No special tag"}
-            </p>
+            </div>
+
           </li>
         ))}
       </ul>
