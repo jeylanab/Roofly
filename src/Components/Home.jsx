@@ -219,7 +219,7 @@ export const Home = () => {
               <img src={lc} alt="location" />
               <p className="text-gray-600">{property.address}</p>
             </div>
-            <div className='flex justify-between text-lg'>
+            <div className='flex justify-between text-lg items-center'>
               <div className='flex'>
               <img src={bath} alt="" /> <p className='mx-2'>{property.attributes.bathrooms} {property.attributes.bathrooms === 1 ? "bath" : "baths"} </p>
               </div>
