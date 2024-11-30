@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import menuList from "../constant/index.js"; // Assuming your menu list is here
+import { Link } from "react-router-dom"; 
+import menuList from "../constant/index.js";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 export const Navigation = () => {
@@ -74,7 +74,7 @@ export const Navigation = () => {
                 <Link
                   to={menu.path}
                   className="hover:text-gray-500"
-                  onClick={() => setIsMenuOpen(false)} // Close menu on link click
+                  onClick={() => setIsMenuOpen(false)} 
                 >
                   {menu.title}
                 </Link>
