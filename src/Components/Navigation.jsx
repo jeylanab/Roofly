@@ -44,8 +44,9 @@ export const Navigation = () => {
       {/* Navigation Bar (only for small screens) */}
       <div className="lg:hidden flex items-center justify-between p-4">
         {/* Logo */}
-        <h1 className="text-3xl font-semibold">Roofly</h1>
-
+          <Link to={menuList[0].path}>
+          <h1 className="text-3xl font-semibold">Roofly</h1>
+          </Link>
         {/* Hamburger Menu */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -84,10 +85,14 @@ export const Navigation = () => {
             ))}
           </ul>
           <div className="flex flex-col items-center mt-8 space-y-4">
-            <Link to="/login">
+            <Link
+              onClick={() => setIsMenuOpen(false)}
+              to="/login">
               <p className="text-lg">Sign In</p>
             </Link>
-            <Link to="/signup">
+            <Link
+              onClick={() => setIsMenuOpen(false)}
+              to="/signup">
               <button className="bg-black text-white rounded-lg px-10 text-xl py-3">
                 Sign Up
               </button>
