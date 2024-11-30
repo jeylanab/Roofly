@@ -12,7 +12,9 @@ export const Navigation = () => {
       <div className="lg:flex hidden items-center justify-between">
         <div className="logo-container flex items-center">
           {/* Logo */}
+          <Link to={menuList[0].path}>
           <h1 className="text-4xl font-semibold">Roofly</h1>
+          </Link>
         </div>
 
         {/* Menu Links */}
