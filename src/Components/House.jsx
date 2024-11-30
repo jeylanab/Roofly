@@ -10,14 +10,11 @@ export const House = () => {
   return (
     <div className="container mx-auto py-10 px-4">
       <div className="w-full">
-        {/* First Row (Main Image + Sub Images) */}
         <div className="flex flex-col lg:flex-row justify-center gap-4">
-          {/* Main Image (Left) */}
           <div className="w-full lg:w-[35%] flex justify-center">
             <img src={img1} alt="Image 1" className="w-full h-auto object-cover" />
           </div>
 
-          {/* Sub Images (Right) */}
           <div className="flex flex-col justify-end w-full lg:w-[65%] gap-4">
             <div className="flex justify-center gap-4 h-[50%] w-full">
               {/* Image 2 */}
@@ -30,14 +27,12 @@ export const House = () => {
               </div>
             </div>
 
-            {/* Image 4 (Full width) */}
             <div className="w-full">
               <img src={img5} alt="Image 4" className="w-full h-auto object-cover" />
             </div>
           </div>
         </div>
 
-        {/* Second Row (Images 5 & 6) */}
         <div className="flex flex-col lg:flex-row justify-center gap-4 mt-4">
           {/* Image 5 */}
           <div className="w-full lg:w-[65%] flex justify-center">
