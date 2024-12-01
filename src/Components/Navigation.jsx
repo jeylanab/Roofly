@@ -11,7 +11,6 @@ export const Navigation = () => {
       {/* Navigation Bar (only for large screens) */}
       <div className="lg:flex hidden items-center justify-between">
         <div className="logo-container flex items-center">
-          {/* Logo */}
           <Link to={menuList[0].path}>
           <h1 className="text-4xl font-semibold">Roofly</h1>
           </Link>
@@ -58,8 +57,8 @@ export const Navigation = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white absolute top-0 left-0 w-full h-screen z-10">
-          <div className="flex items-center justify-between p-4">
+        <div className="lg:hidden bg-white absolute  top-0 left-0 w-full h-screen z-10">
+          <div className="flex items-center justify-between p-4 m-5">
             {/* Logo */}
             <h1 className="text-3xl font-semibold">Roofly</h1>
 
