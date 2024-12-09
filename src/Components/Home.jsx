@@ -112,7 +112,7 @@ export const Home = () => {
               onChange={(e) => setLocation(e.target.value)}
               className="px-3"
               type="text"
-              placeholder="Choose location"
+              placeholder="Search UK cities"
             />
           </div>
           <div className="flex flex-col mx-10">
@@ -193,8 +193,8 @@ export const Home = () => {
         />
       </div>
     </div>
-
-<div className="results-container my-10">
+{/* result container div */}
+   <div className="results-container my-10">
         {loading && <p>Loading...</p>}
         {error && <p className="text-red-500">Error: {error}</p>}
         {results.length > 0 ? (
@@ -240,7 +240,7 @@ export const Home = () => {
             </ul>
           </div>
         ) : (
-          !loading && <p>No properties found.</p>
+          !loading && <p></p>
         )}
       </div>
 
