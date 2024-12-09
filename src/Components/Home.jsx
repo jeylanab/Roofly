@@ -10,6 +10,7 @@ import { House } from './House';
 import bd from "../Assets/bd.svg"
 import bath from "../Assets/bath.svg"
 import lc from "../Assets/lc.svg"
+import { useNavigate } from 'react-router-dom';
 
 
 // Load environment variables
@@ -23,6 +24,7 @@ export const Home = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null); 
+  const navigate = useNavigate();
 
   // Fetch properties from the API
   const fetchProperties = async (location) => {
@@ -60,6 +62,10 @@ export const Home = () => {
       return;
     }
     fetchProperties(location);
+  };
+  
+    const handleCardClick = (property) => {
+    navigate(`/property/${property.listingId}`, { state: { property } });
   };
 
   return (
@@ -188,61 +194,55 @@ export const Home = () => {
       </div>
     </div>
 
-      {/* Display results or loading/error states */}
- <div className="results-container my-10">
-  {loading && <p>Loading...</p>}
-  {error && <p className="text-red-500">Error: {error}</p>}
-  {results.length > 0 ? (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Properties:</h2>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {results.map((property, index) => (
-          <li
-          
-            key={property.listingId}
-            className="relative my-5"
-          >
-            <img
-              src={property.imageUris?.[0] || 'https://via.placeholder.com/150'}
-              alt={property.title}
-              className="rounded-md mb-4 w-full object-cover"
-            />
-            <div className='border bg-white shadow-sm w-[90%] absolute bottom-[-15px] left-5'>
-            <div className='flex justify-between items-top'>
-              <h3 className="text-lg font-bold ">{property.title}</h3>
-              <p className="text-xl text-lime-500 font-bold">
-              {property.pricing.label || "Price not available"}
-              </p>
-            
-            </div>
-            <div className='flex justify-start items-start'>
-              <img src={lc} alt="location" />
-              <p className="text-gray-600">{property.address}</p>
-            </div>
-            <div className='flex justify-between text-lg items-center'>
-              <div className='flex'>
-              <img src={bath} alt="" /> <p className='mx-2'>{property.attributes.bathrooms} {property.attributes.bathrooms === 1 ? "bath" : "baths"} </p>
-              </div>
-              <div className='flex'>
-              <img src={bd} alt="" /> <p className='mx-2'>{property.attributes.bedrooms} {property.attributes.bedrooms === 1 ? "bed" : "beds"}</p>
-              
-              </div>
-              <p className="text-sm text-lime-500">
-              {property.flag || "No special tag"}
-                </p>
-                
-              </div>
-            </div>
-              
-
-          </li>
-        ))}
-      </ul>
-    </div>
-  ) : (
-    !loading && <p></p>
-  )}
-</div>
+<div className="results-container my-10">
+        {loading && <p>Loading...</p>}
+        {error && <p className="text-red-500">Error: {error}</p>}
+        {results.length > 0 ? (
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Properties:</h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {results.map((property) => (
+                <li
+                  key={property.listingId}
+                  className="relative my-5 cursor-pointer"
+                  onClick={() => handleCardClick(property)}
+                >
+                  <img
+                    src={property.imageUris?.[0] || 'https://via.placeholder.com/150'}
+                    alt={property.title}
+                    className="rounded-md mb-4 w-full h-72 object-cover"
+                  />
+                  <div className='border bg-white shadow-sm w-[90%] absolute bottom-[-15px] left-5'>
+                    <div className='flex justify-between items-top'>
+                      <h3 className="text-lg font-bold ">{property.title}</h3>
+                      <p className="text-xl text-lime-500 font-bold">
+                        {property.pricing.label || "Price not available"}
+                      </p>
+                    </div>
+                    <div className='flex justify-start items-start'>
+                      <img src={lc} alt="location" />
+                      <p className="text-gray-600">{property.address}</p>
+                    </div>
+                    <div className='flex justify-between text-lg items-center'>
+                      <div className='flex'>
+                        <img src={bath} alt="" /> <p className='mx-2'>{property.attributes.bathrooms} {property.attributes.bathrooms === 1 ? "bath" : "baths"} </p>
+                      </div>
+                      <div className='flex'>
+                        <img src={bd} alt="" /> <p className='mx-2'>{property.attributes.bedrooms} {property.attributes.bedrooms === 1 ? "bed" : "beds"}</p>
+                      </div>
+                      <p className="text-sm text-lime-500">
+                        {property.flag || "No special tag"}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          !loading && <p>No properties found.</p>
+        )}
+      </div>
 
       {/* Services and House Components */}
       <Services />

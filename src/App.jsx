@@ -7,7 +7,7 @@ import { Footer } from "./Components/Footer";
 import { About } from "./Pages/About";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
-import PropertyList from "./Components/PropertyList";
+import {PropertyDetails} from "./Components/PropertyDetails";
 import  {SearchProperty} from "./Components/searchProperty";
 
 function App() {
@@ -20,9 +20,12 @@ function App() {
         
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/buy" element={<PropertyList />} />  
+          <Route path="/property/:id" element={<PropertyDetails />} />
+
+          
+          {/* <Route path="/buy" element={<PropertyList />} />  
           <Route path="/rent" element={<PropertyList />} />  
-          <Route path="/item" element={<PropertyList />} />
+          <Route path="/item" element={<PropertyList />} /> */}
           <Route path="/about" element={<About />} /> 
           <Route path="/login" element={<Login />} /> 
           <Route path="/signup" element={<SignUp />} /> 
