@@ -24,13 +24,13 @@ import {
 } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA0FQ8FtyfkcTi9-HlQZmKgBNAm5PimmUw",
-  authDomain: "roofly-b3d4f.firebaseapp.com",
-  projectId: "roofly-b3d4f",
-  storageBucket: "roofly-b3d4f.firebasestorage.app",
-  messagingSenderId: "737354322292",
-  appId: "1:737354322292:web:2b946ce66eea7e3741dc21",
-  measurementId: "G-K734YCWDP4"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
