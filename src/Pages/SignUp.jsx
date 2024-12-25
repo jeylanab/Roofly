@@ -1,125 +1,147 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { signUp } from '../firebase/config';
+import { useAuth } from '../context/AuthContext';
 
-const SignUp = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+export const SignUp = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { user } = useAuth();
 
-  // Handle form submission
-  const handleSignUp = (e) => {
+  // Redirect if already logged in
+  if (user) {
+    navigate('/');
+    return null;
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Basic validation
-    if (!name || !email || !password || !confirmPassword) {
-      setErrorMessage('All fields are required.');
+    if (formData.password !== formData.confirmPassword) {
+      setError('Passwords do not match');
       return;
     }
 
-    if (password !== confirmPassword) {
-      setErrorMessage('Passwords do not match.');
-      return;
+    try {
+      setError('');
+      setLoading(true);
+      await signUp(formData.email, formData.password, formData.name);
+      navigate('/');
+    } catch (error) {
+      setError('Failed to create an account. ' + error.message);
+      console.error('Signup error:', error);
+    } finally {
+      setLoading(false);
     }
-
-    // Reset error message on success
-    setErrorMessage('');
-    
-    // Simulate a successful signup (e.g., calling an API)
-    setSuccessMessage('Account created successfully!');
-    
-    // Handle actual sign-up logic here (e.g., API call)
-    console.log('User Info:', { name, email, password });
-
-    // Clear form fields after submission
-    setName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-4">Sign Up</h2>
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 className="text-3xl font-bold mb-6 text-center">Create Account</h2>
 
-        {/* Success or Error Message */}
-        {errorMessage && <p className="text-red-500 text-center mb-4">{errorMessage}</p>}
-        {successMessage && <p className="text-green-500 text-center mb-4">{successMessage}</p>}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {error}
+          </div>
+        )}
 
-        {/* Sign Up Form */}
-        <form onSubmit={handleSignUp}>
-          <div className="mb-4">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              Full Name
+            </label>
             <input
               type="text"
               id="name"
               name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={formData.name}
+              onChange={handleChange}
               required
-              className="mt-2 p-2 w-full border border-gray-300 rounded-md"
-              placeholder="Enter your full name"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-black focus:border-black"
+              disabled={loading}
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
             <input
               type="email"
               id="email"
               name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleChange}
               required
-              className="mt-2 p-2 w-full border border-gray-300 rounded-md"
-              placeholder="Enter your email"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-black focus:border-black"
+              disabled={loading}
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
             <input
               type="password"
               id="password"
               name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={handleChange}
               required
-              className="mt-2 p-2 w-full border border-gray-300 rounded-md"
-              placeholder="Enter your password"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-black focus:border-black"
+              disabled={loading}
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm Password</label>
+          <div>
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+              Confirm Password
+            </label>
             <input
               type="password"
               id="confirmPassword"
               name="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={formData.confirmPassword}
+              onChange={handleChange}
               required
-              className="mt-2 p-2 w-full border border-gray-300 rounded-md"
-              placeholder="Confirm your password"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-black focus:border-black"
+              disabled={loading}
             />
           </div>
 
           <button
             type="submit"
-            className="w-full mt-6 py-2 bg-black text-white font-bold rounded-lg hover:bg-blue-700 transition"
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50"
+            disabled={loading}
           >
-            Sign Up
+            {loading ? 'Creating Account...' : 'Sign Up'}
           </button>
         </form>
 
         <p className="mt-4 text-center text-sm text-gray-600">
-          Already have an account? <a href="/login" className="text-blue-600 hover:text-blue-800">Login</a>
+          Already have an account?{' '}
+          <Link to="/login" className="font-medium text-black hover:text-gray-800">
+            Sign in
+          </Link>
         </p>
       </div>
     </div>
   );
 };
-
-export default SignUp;

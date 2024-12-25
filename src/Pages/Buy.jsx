@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { FaHeart, FaMapMarkerAlt, FaBed, FaBath, FaRulerCombined, FaTimes } from 'react-icons/fa';
 import { getProperties } from '../firebase/config';
 
-export const Rent = () => {
+export const Buy = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,7 +23,7 @@ export const Rent = () => {
     const fetchProperties = async () => {
       try {
         setLoading(true);
-        const fetchedProperties = await getProperties({ status: 'For Rent' });
+        const fetchedProperties = await getProperties({ status: 'For Sale' });
         setProperties(fetchedProperties);
       } catch (error) {
         console.error('Error fetching properties:', error);
@@ -82,7 +82,7 @@ export const Rent = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Properties for Rent</h1>
+      <h1 className="text-3xl font-bold mb-8">Properties for Sale</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {properties.map((property) => (
@@ -113,7 +113,7 @@ export const Rent = () => {
             
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{property.title}</h2>
-              <p className="text-gray-600 mb-2">${property.price.toLocaleString()}/month</p>
+              <p className="text-gray-600 mb-2">${property.price.toLocaleString()}</p>
               <div className="flex items-center text-gray-500 mb-4">
                 <FaMapMarkerAlt className="mr-1" />
                 <span>{property.location}</span>
@@ -163,7 +163,7 @@ export const Rent = () => {
                 className="w-full h-64 object-cover rounded-lg mb-4"
               />
               <p className="text-2xl font-bold text-blue-600 mb-4">
-                ${selectedProperty.price.toLocaleString()}/month
+                ${selectedProperty.price.toLocaleString()}
               </p>
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div className="flex items-center">
@@ -200,7 +200,7 @@ export const Rent = () => {
               </div>
               {selectedProperty.sellerName && (
                 <div className="mt-6 bg-gray-50 p-4 rounded-lg">
-                  <h3 className="font-semibold mb-4">Contact Landlord</h3>
+                  <h3 className="font-semibold mb-4">Contact Seller</h3>
                   <div className="space-y-2">
                     <p className="text-gray-700">
                       <span className="font-medium">Name:</span> {selectedProperty.sellerName}

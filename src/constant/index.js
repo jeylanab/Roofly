@@ -1,32 +1,25 @@
-
 // navigation menu list
 const menuList = [
   {
     id: 1,
     title: "Home",
-    path: "/",
+    path: "/"
   },
   {
     id: 2,
     title: "Buy",
-    path: "/item",
+    path: "/buy"
   },
   {
     id: 3,
     title: "Rent",
-    path: "/item",
+    path: "/rent"
   },
   {
     id: 4,
-    title: "Properties",
-    path: "/item",
-  },
-
-  {
-    id: 5,
     title: "About",
-    path: "/about",
-  },
+    path: "/about"
+  }
 ];
 
 export default menuList;
