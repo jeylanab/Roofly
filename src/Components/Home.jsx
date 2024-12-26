@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { getProperties } from '../firebase/config';
+import { House } from './House';
+import { Services } from '../Pages/Services';
 import { FaTimes, FaMapMarkerAlt, FaBed, FaBath, FaRulerCombined } from 'react-icons/fa';
 import hero from "../Assets/hero-image1.png";
 import loc from "../Assets/location.svg";
@@ -194,6 +196,8 @@ export const Home = () => {
           </div>
         </div>
       )}
+      <Services/>
+      <House/>
     </div>
   );
 };
